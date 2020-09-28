@@ -1,7 +1,7 @@
 ESlint란
 
 ## Linter의 기능
-Linter는 어떨 때 사용할까요? 실생활에서도 Linter가 적용되어 있습니다. 
+Linter는 어느 경우에 사용할까요? 사실 실 생활에서도 Linter가 적용되어 있습니다. 
 탕수육(Code)을 먹을 때 부먹이냐 찍먹이냐의 싸울 때, 결국 사주는 사람(Linter)의 취향으로 가게됩니다. 
 코드로 본다면 한 개발자는 indent 값을 2로 주고싶은데, 또 다른 개발자는 4로 주고 싶을 경우가 있을 것입니다.
 
@@ -73,30 +73,62 @@ $ eslint --init
 package.json 파일의 eslintConfig 부분에서도 설정할 수 있습니다. 
 
 
+.eslintignore 파일을 생성하여 ESLint를 무시할 수도 있습니다.(/node_modules/* and /bower_components/* in the project root는 기본적으로 제외되어 있습니다.)
 
-.eslintignore파일을 생성하여 ESLint를 무시할 수도 있습니다.(/node_modules/* and /bower_components/* in the project root는 기본적으로 제외되어 있습니다.)
+추가로 prettier도 설치해봅시다.
+
+
+## prettier
+Prettier는 2016년에 등장했고, 코드 포맷터 입니다. Prettier를 사용하면 코드를 완전히 다시 작성해줍니다.(변경이 필요한 부분만 바꾸는게 아니라, 코드 전체를 새로 작성 합니다.) 코드 내용은 변하지 않고 구조적 뷰만 변경될 뿐입니다.
+JS, TS, HTML, CSS, JSON, YML, GrapQL괕 같은 언어와 Angular, Vue, React같은 프레임워크를 지원합니다. 
+
+# ESLint VS Prettier
+ESLint는 코드 포맷터의 역할도 하지만, 주로 코드 에러를 잡아내고 코드 문법을 강제하는 등 코드 품질을 개선에 중점을 두었습니다.
+Prettier는 코드의 최대 길이, 작은따옴표(')를 사용할 것인지 아니면 큰 따옴표(')를 사용할 것인지 등 코드의 오류는 없지만 코드가 얼마나 예쁘게 보이도록 하는지에 중점을 두었습니다. 하지만 코드의 오류를 잡아내진 못합니다.
+Prettier 공식 홈페이지에 들어가보면 아래와 같은 문구가 있습니다.
+use Prettier for formatting and linters for catching bugs!
+즉 포맷팅에는 Prettier를 사용하고, 버그를 잡는 것은 Lint를 사용하면 됩니다.
+ 
+```bash
+npm i -D -E prettier
+```
+
+-E는 --save-exac 의 축약어로서, Prettier에서는 이 옵션을 붙이는 것을 권장합니다. 버전이 달라지면서 스타일이 변할 수 있기 때문입니다.
 
 이제 푸시 전에 코드를 eslint로 강제해봅시다.
 다음의 도구들이 추가로 필요합니다.
 
 ```bash
-$ npm i -D  prettier husky lint-staged
+$ npm i -D  husky lint-staged
 ```
 
-## prettier
-Prettier는 2016년에 등장했고, 코드 포맷터 입니다. Prettier를 사용하면 코드를 완전히 다시 작성해줍니다.(변경이 필요한 부분만 바꾸는게 아니라, 완전 새로 작성을 한다.) 코드 내용은 변하지 않고 구조적 뷰만 변경될 뿐입니다.
-JS, TS, HTML, CSS, JSON, YML, GrapQL괕 같은 언어와 Angular, Vue, React같은 프레임워크를 지원합니다.
+루트 경로에 .prettierrc 파일을 만들어 줍시다.
 
+그 후에 Prettier 옵션을 https://prettier.io/docs/en/options.html 에 들어가서 알맞게 변경해줍시다. 저는 보통 아래와 같이 사용합니다.
 
-이제 Pull Request 할때, 코드가 팀의 컨벤션에 맞지 않는다는 리뷰를 쓸일은 없을 것입니다. 
+```json
+{
+  "arrowParens": "avoid",
+  "bracketSpacing": true,
+  "htmlWhitespaceSensitivity": "css",
+  "insertPragma": false,
+  "jsxBracketSameLine": false,
+  "jsxSingleQuote": false,
+  "printWidth": 80,
+  "proseWrap": "preserve",
+  "quoteProps": "as-needed",
+  "requirePragma": false,
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "none",
+  "useTabs": false,
+  "vueIndentScriptAndStyle": false
+}
+```
 
-# ESLint VS Prettier
-ESLint는 코드 포맷터의 역할도 하지만, 주로 코드 에러를 잡아내고 코드 문법을 강제하는 등 코드 품질을 개선에 중점을 두었습니다.
-Prettier는 코드의 최대 길이, 작은따옴표(')를 사용할 것인지 아니면 큰 따옴표(')를 사용할 것인지 등 코드의 오류는 없지만 코드가 얼마나 예쁘게 보이도록 하는지에 중점을 두었습니다.
-예를 들어 ESLint는 선언하지 않고 변수를 사용하면 경고를 표시합니다. Prettier는 그런 기능이 없습니다.
-또한 ESLint는 코드 서식에 어떤 문제가 있는지 알려주고 문제를 해결할 수있는 옵션을 제공합니다. 그런 다음 해당 옵션에서 하나를 선택할 수 있습니다. 
-반면에 Prettier는 모든 코드를 예쁘게 보이도록 변경해줄 뿐입니다. 
-
+이제 팀 프로젝트를 할 때 식은 땀이 나게 만드는 명령어인 git push 할때 마지막으로 lint와 prettier를 검사하여 오류도 잡아내고 이쁘게 push가 되도록 해봅시다.  
+lint와 prettier이 강제로 실행되도록 툴들을 설치해봅시다.
 
 ## husky
 Git Hook을 편하게 관리해주는 툴입니다.
@@ -144,16 +176,18 @@ git에 staged 상태인 파일만 lint 해주는 도구입니다.
 # ESLint vs TSLint
 ESLint는 표준 자바스크립트의 표준 Linter입니다. 
 1. 프로그램을 직접 실행해서 코드를 분석 ( <=> 프로그램을 실행하지 않고 분석하는 정적분석)
-2.  ESLint는 코드 서식에 어떤 문제가 있는지 알려주고 문제를 해결할 수있는 옵션을 제공합니다. 그런 다음 해당 옵션에서 하나를 선택할 수 있습니다. 반면에 Prettier는 전혀 신경 쓰지 않습니다. 단순히 모든 코드를 다른 구조로 형식화합니다.
-3. 반면에 Prettier의 전체 재 작성 프로세스는 개발자가 실수를하지 않도록합니다. max-len , no-mixed-spaces-and-tabs , keyword-spacing , comma-style 이들은 Prettier에서 널리 사용되는 서식 지정 규칙입니다.
+2. ESLint는 코드 서식에 어떤 문제가 있는지 알려주고 문제를 해결할 수있는 옵션을 제공합니다. 그런 다음 해당 옵션에서 하나를 선택할 수 있습니다. 반면에 Prettier 는 전혀 신경 쓰지 않습니다. 단순히 모든 코드를 다른 구조로 형식화합니다.
+3. 반면에 Prettier의 전체 재 작성 프로세스는 개발자가 실수를하지 않도록합니다. max-len , no-mixed-spaces-and-tabs , keyword-spacing , comma-style 이들은 Prettier 에서 널리 사용되는 서식 지정 규칙입니다.
 4. 위의 규칙 유형 외에도 ESLint는 no-unused-vars , no-extra-bind , no-implicit-globals , prefer-promise-reject-errors 와 같은 코드 품질 규칙도 고려 합니다 .
 
 
 # Extends 
 
-airbnb 스타일로 해봅시다.
+ESLint를 airbnb에서 사용하는 스타일로 해봅시다. 유명한 확장 플러그인 중 하나지만, 이 방식은 굉장히 타이트합니다. 툭하면 에러를 뱉어냅니다.
+ 에 들어가서 필요없는 옵션들은 꺼줍시다. 
 
 https://github.com/ParkSB/javascript-style-guide
+
 
 # Preferences
 https://www.huskyhoochu.com/npm-husky-the-git-hook-manager/
