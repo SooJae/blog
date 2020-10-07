@@ -268,19 +268,20 @@ git에 staged 상태인 파일만 lint 해주는 도구입니다.
 
 ```json
 "husky": {
-"hooks": {
-"pre-commit": "lint-staged",
-"pre-push": "npm test"
-}
-},
-
-"lint-staged": {
-"*.{js, jsx}": [
-"eslint --fix",
-"prettier --write"
-]
-}
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm test"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  }
 ``` 
+
+
 
 ```js
 // test.js
@@ -311,12 +312,35 @@ husky > pre-commit hook failed (add --no-verify to bypass)
 
 ```
 
+변수 abc를 사용하지 않는다는 에러가 발생했으니, 변수 abc를 사용해봅시다. 
 
 ```js
 const abc
   = 0;
 
 console.log(abc)
+```
+
+다시 커밋을 하면 아래와 같은 메시지가 나옵니다.
+
+```bash
+$ git commit
+husky > pre-commit (node v12.18.0)
+✔ Preparing...
+✔ Running tasks...
+✔ Applying modifications...
+✔ Cleaning up... 
+[master 17e09f6] [Tools] eslint huskey lint-staged 테스트
+ 3 files changed, 17 insertions(+), 15 deletions(-)
+```
+
+커밋이 완료되면 test.js에 prettier가 자동적으로 적용된 것을 확인 할수 있습니다.
+```js
+// test.js
+// prettier가 적용된 것을 확인 할 수 있습니다.
+const abc = 0;
+
+console.log(abc);
 ```
 
 # ESLint vs TSLint
