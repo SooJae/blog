@@ -292,30 +292,32 @@ const abc
 ```git
 husky > pre-commit (node v12.18.0)
 ✔ Preparing...
-✔ Hiding unstaged changes to partially staged files...
 ⚠ Running tasks...
-  ❯ Running tasks for *.{js, jsx}
-    ✖ ESLint --fix [FAILED]
+  ❯ Running tasks for *.js
+    ✖ eslint --fix [FAILED]
     ◼ prettier --write
-↓ Skipped because of errors from tasks. [SKIPPED]
 ↓ Skipped because of errors from tasks. [SKIPPED]
 ✔ Reverting to original state because of errors...
 ✔ Cleaning up... 
 
-✖ ESLint --fix:
+✖ eslint --fix:
 
-Oops! Something went wrong! :(
+/Users/soojae/IdeaProjects/Blog/Tools/Example/test.js
+  1:7  error  'abc' is assigned a value but never used  no-unused-vars
 
-ESLint: 7.10.0
-
-Failed to read JSON file at /Users/soojae/IdeaProjects/Blog/Tools/Example/package.json:
-
-Cannot read config file: /Users/soojae/IdeaProjects/Blog/Tools/Example/package.json
-Error: Unexpected token } in JSON at position 516
+✖ 1 problem (1 error, 0 warnings)
 
 husky > pre-commit hook failed (add --no-verify to bypass)
+
 ```
 
+
+```js
+const abc
+  = 0;
+
+console.log(abc)
+```
 
 # ESLint vs TSLint
 ESLint는 표준 자바스크립트의 표준 Linter입니다. 
