@@ -22,4 +22,10 @@
       "pre-push": "npm test"
     }
   },
+  "lint-staged": {
+    "*.[js, jsx]": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  }
 }
