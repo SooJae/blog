@@ -14,7 +14,7 @@ $ npm i -g eslint
 $ npm i eslint -D
 ```
 
-eslint 라이브러리를 설치가 되면 초기화를 합니다.
+eslint 패키지를 설치가 되면 초기화를 합니다.
 ```bash
 $ eslint --init
 ```
@@ -47,7 +47,7 @@ Vue.js
 // 타입 스크립트를 사용하나요?
 
 ? Where does your code run? … (Press <space> to select, <a> to toggle all, <i> to invert selection)
-✔ Browser
+✔ Browsere
 ✔ Node
 
 // 어떤 환경에서 코드가 동작하나요?
@@ -60,8 +60,8 @@ JSON
 // 해당 ESLint 설정을 어디에서 사용하나요? 
 ```
 
-이후 .eslintrc.js 파일이 생성되며 이 파일은 ESLint에 대한 설정들이 있습니다. 
-.eslintrc.js 파일을 만들기 싫다면, package.json 파일 내의 eslintConfig 부분에서도 설정할 수 있습니다. 
+이후 .eslintrc 파일이 생성되며 이 파일은 ESLint에 대한 설정들이 있습니다. 
+.eslintrc 파일을 만들기 싫다면, package.json 파일 내의 eslintConfig 부분에서도 설정할 수 있습니다. 
 
 .eslintignore 파일을 생성하여 해당 파일, 폴더들에 대한 ESLint를 무시할 수도 있습니다.(프로젝트 내의 /node_modules/* and /bower_components/* 는 기본적으로 제외되어 있습니다.)
 
@@ -195,7 +195,7 @@ use Prettier for formatting and linters for catching bugs!
 ## ESLint + Prettier 
 이제 ESLint와 Prettier를 같이 사용해봅시다.
 하지만 위에서 말씀 드렸듯이, ESLint가 코드 포맷터의 역할도 하기 때문에 해당 Prettier와 충돌할 수도 있습니다.
-이를 방지하기 위해서 아래의 라이브러리를 추가합니다.
+이를 방지하기 위해서 아래의 패키지를 추가합니다.
 `eslint-config-prettier`는 ESLint 규칙에서 Pretter와 충돌하는 것들을 끄는 역할을 합니다.
 
 ```bash
@@ -209,7 +209,7 @@ $ npm i -D eslint-plugin-prettier
 ```
 
 ```json
-// .eslintrc.js
+// .eslintrc
 {
 plugins: [
 "prettier"
@@ -231,7 +231,7 @@ $ eslint test.js --fix
 그렇게 되면 깃 로그에 eslint 적용 같은 쓸데 없는 로그들이 쌓이게 됩니다.
 이런 경우를 방지하기 위해 깃 푸시 전에 코드를 ESLint를 강제해 봅시다.
 
-husky 와 lint-staged 라이브러리를 추가로 설치합니다.
+husky 와 lint-staged 패키지를 추가로 설치합니다.
 
 ```bash
 $ npm i -D husky lint-staged
@@ -281,6 +281,7 @@ git에 staged 상태인 파일만 lint 해주는 도구입니다.
   }
 ``` 
 
+사실 위에서 eslint-plugin-prettier 패키지를 설치 했기 때문에 eslint --fix만 사용해도 prettier 까지 적용이 됩니다. 
 
 
 ```js
@@ -291,6 +292,8 @@ const abc
 ```
 
 ```git
+$ git commit -m "[Tools] eslint husky lint-staged 테스트"
+
 husky > pre-commit (node v12.18.0)
 ✔ Preparing...
 ⚠ Running tasks...
@@ -324,7 +327,8 @@ console.log(abc)
 다시 커밋을 하면 아래와 같은 메시지가 나옵니다.
 
 ```bash
-$ git commit
+$ git commit -m "[Tools] eslint husky lint-staged 테스트"
+
 husky > pre-commit (node v12.18.0)
 ✔ Preparing...
 ✔ Running tasks...
@@ -335,6 +339,7 @@ husky > pre-commit (node v12.18.0)
 ```
 
 커밋이 완료되면 test.js에 prettier가 자동적으로 적용된 것을 확인 할수 있습니다.
+
 ```js
 // test.js
 // prettier가 적용된 것을 확인 할 수 있습니다.
@@ -342,6 +347,7 @@ const abc = 0;
 
 console.log(abc);
 ```
+
 
 # ESLint vs TSLint
 ESLint는 표준 자바스크립트의 표준 Linter입니다. 
