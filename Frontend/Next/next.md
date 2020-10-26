@@ -49,3 +49,14 @@ https://nextjs.org/learn/basics/data-fetching/pre-rendering
 ## SSG
 Only Allowed in a Page
 getStaticProps can only be exported from a page. You can’t export it from non-page files.
+
+## Hydration?
+JS로 생성된 DOM을 그대로 이용하는 Hydration 기능
+ 
+Hydration 아키텍처에서는 첫 웹 페이지 렌더는 SSR로 이루어지지만 그 이후부터 전환될 모든 페이지는 CSR로 이루어진다. 특히 이후에 이루어지는 이벤트 리스너 등록작업등을 Hydrate라고 부른다. 이런 작업은 원래 개발자가 직접해야하는 것이지만 프로그래머가 신경 쓸 필요가 없도록 구현되어있는 프레임워크를 사용할 수도 있다. 바로 Next.js 와 Nuxt.js 등의 메타 프레임워크이다. Hydration을 이용하면 모든게 좋아질 것 같지만 그럼에도 TTI는 전혀 좋아지지를 않는다.
+
+ 
+https://hyunseob.github.io/2019/05/26/google-io-2019-day-3/
+https://ssr.vuejs.org/guide/hydration.html
+https://simsimjae.tistory.com/390
+https://shlrur.github.io/develog/2019/02/14/rendering-on-the-web/
