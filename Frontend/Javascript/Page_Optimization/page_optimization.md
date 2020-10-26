@@ -51,7 +51,7 @@ FMP(First Meaningful Paint): 사용자에게 의미 있는 콘텐츠가 그려�
 
 
 페이지 로딩 최적화에 방법과 자세한 설명은 https://ui.toast.com/fe-guide/ko_PERFORMANCE/ 에서 확인해보시길 바랍니다.
-
+다음은 렌더링의 종류와 차이점에 대해 포스팅 하겠습니다.  
 
 글에 오류가 있으면 알려주세요 감사합니다.
 
@@ -61,7 +61,4 @@ FMP(First Meaningful Paint): 사용자에게 의미 있는 콘텐츠가 그려�
 https://en.ryte.com/magazine/measure-page-speed
 https://ui.toast.com/fe-guide/ko_PERFORMANCE/
 https://marshall-ku.com/web/log/ttfb-%EB%8C%80%ED%8F%AD-%EB%8B%A8%EC%B6%95-%EC%84%B1%EA%B3%B5
-
-
-
-
+https://web.dev/user-centric-performance-metrics/
