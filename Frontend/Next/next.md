@@ -60,3 +60,10 @@ https://hyunseob.github.io/2019/05/26/google-io-2019-day-3/
 https://ssr.vuejs.org/guide/hydration.html
 https://simsimjae.tistory.com/390
 https://shlrur.github.io/develog/2019/02/14/rendering-on-the-web/
+
+
+component -> dispatch -> action -> reducer -> redux -> provider -> container -> component 
+https://velog.io/@jodmsoluth/ssr%EC%9D%84-%EA%B3%B5%EB%B6%80%ED%95%98%EB%A9%B0
+
+
+https://velog.io/@sirl/Next.js-9.3%EA%B3%BC-Prisma%EB%A1%9C-%EC%A0%95%EC%A0%81-%EC%9B%B9%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%A7%8C%EB%93%A4%EA%B8%B0

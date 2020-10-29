@@ -35,3 +35,8 @@ Type의 경우 에러가 발생합니다.
 
 
 https://blog.logrocket.com/types-vs-interfaces-in-typescript/
+
+
+타입 스크립트의 타입 가변성 (공변, 반공변)
+https://velog.io/@vnthf/%ED%83%80%EC%9E%85%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EC%9D%98-%ED%83%80%EC%9E%85%EA%B0%80%EB%B3%80%EC%84%B1
+https://medium.com/@michalskoczylas/covariance-contravariance-and-a-little-bit-of-typescript-2e61f41f6f68
