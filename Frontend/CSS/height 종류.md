@@ -1,4 +1,4 @@
-scrollHeight: ENTIRE  content & padding (visible or not)
+3scrollHeight: ENTIRE  content & padding (visible or not)
 Height of all content + paddings, despite of height of the element.
 
 clientHeight: VISIBLE content & padding
